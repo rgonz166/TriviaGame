@@ -1,0 +1,16 @@
+.button-hide{
+    display: none;
+}
+
+.answer-choice{
+    padding-left: 10px;
+    font-weight: 500;
+}
+
+.answer-choice:hover {
+    border-radius: 10px;
+    background-color: aqua;
+}
+ul{
+    list-style:none;
+}
