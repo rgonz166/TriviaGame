@@ -29,5 +29,13 @@ var questions = [
         "Chi Chi",
         "Chi Cha",
         2]
+    ],
+    [
+        ["Who is Goku's father?"],
+        ["Paragus",
+        "Borgos",
+        "Bardock",
+        "Vegeta",
+        2]
     ]
 ];

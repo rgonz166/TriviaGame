@@ -10,12 +10,16 @@ var timer = 10;
 
 // DOM variables
 
+
+
 var secondContainer = $('.second-container');
 
 // $(document).on('load',startGame());
 // function startGame(){}
 
 $('.submit').on('click',function(){
+    correct = 0;
+    wrong = 0;
     for(var i=0;i<questions.length;i++){
         currentQuestions.push(questions[i]);
     }
@@ -59,7 +63,7 @@ function isCorrect(){
 
 function isWrong(){
     erase();
-    secondContainer.html('<img src="https://i.kym-cdn.com/entries/icons/original/000/005/609/800px-Yamcha_found_dead.jpg" width="400px"><br><br>');
+    secondContainer.html('<img src="https://i.kym-cdn.com/entries/icons/original/000/005/609/800px-Yamcha_found_dead.jpg"><br><br>');
     secondContainer.append('<button onclick=next()>Next</button>');
 }
 
