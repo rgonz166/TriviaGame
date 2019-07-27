@@ -1,16 +1,31 @@
+body{
+    background-image: url(https://wallpaperaccess.com/full/387102.jpg);
+    background-size: 100vw 100vh;
+}
+
 .button-hide{
     display: none;
 }
 
-.answer-choice{
-    padding-left: 10px;
-    font-weight: 500;
+.answer-choice, p{
+    font-weight: 400;
+    font-size: 1.5rem;
 }
 
 .answer-choice:hover {
     border-radius: 10px;
     background-color: aqua;
 }
+#answers{
+    text-align: center;
+}
+
 ul{
     list-style:none;
+}
+.card{
+    margin-top: 50px;
+    height: 500px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
 }
