@@ -26,6 +26,9 @@ ul{
 img{
     width: 50%;
 }
+.wrongPic{
+    width: 30%;
+}
 .card{
     margin-top: 50px;
     text-align: center;

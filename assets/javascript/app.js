@@ -3,10 +3,13 @@
 // use timer to countdown
 
 var currentQuestions = [];
+var randomQuestion = 0;
 var correct = 0;
 var wrong = 0;
 var total = 10;
-var timer = 10;
+var timer = 0;
+var timeReset = 10;
+var totalQuestions = 10;
 
 // DOM variables
 
@@ -20,6 +23,7 @@ var secondContainer = $('.second-container');
 $('.submit').on('click',function(){
     correct = 0;
     wrong = 0;
+    totalQuestions = 10;
     for(var i=0;i<questions.length;i++){
         currentQuestions.push(questions[i]);
     }
@@ -31,8 +35,9 @@ $('.submit').on('click',function(){
 function getQuestion(){
     // get random question from array
     $('#answers').empty();
-    var randomQuestion = Math.floor(Math.random() * currentQuestions.length);
-
+    $('.timer').text('Time Remaining: '+timeReset + ' Seconds');
+    randomQuestion = Math.floor(Math.random() * currentQuestions.length);
+    console.log("randQues numb: ", randomQuestion);
     // display question
     $('.question').text(currentQuestions[randomQuestion][0][0]);
     for(var i=0;i<4;i++){
@@ -47,29 +52,51 @@ function getQuestion(){
         listItem.text(currentQuestions[randomQuestion][1][i]);
         $('#answers').append(listItem);
     }
-    // remove question from that array
-    currentQuestions.splice(randomQuestion,1);
+    startTimer();
+    totalQuestions--;
 }
 
 $(document).on('click','li',function(){
-    ($(this).attr('data-check')==='answer') ? (correct++, isCorrect()):(wrong++, isWrong());
+    ($(this).attr('data-check')==='answer') ? (correct++, isCorrect()):isWrong();
 })
 
 function isCorrect(){
     erase();
     secondContainer.html('<img src="http://giphygifs.s3.amazonaws.com/media/11YMhfLfGoq5Gg/giphy.gif"><br><br>');
-    secondContainer.append('<button onclick=next()>Next</button>');
+    secondContainer.append('<button onclick=next() type="submit">Next</button>');
+    clearInterval(intervalId);
 }
 
 function isWrong(){
     erase();
-    secondContainer.html('<img src="https://i.kym-cdn.com/entries/icons/original/000/005/609/800px-Yamcha_found_dead.jpg"><br><br>');
-    secondContainer.append('<button onclick=next()>Next</button>');
+    wrong++;
+    console.log(randomQuestion);
+    var correctAnswer = (currentQuestions[randomQuestion][1][4]);
+    secondContainer.html('<h3>'+currentQuestions[randomQuestion][0][0]+'</h3>');
+    secondContainer.append('<p>'+ currentQuestions[randomQuestion][1][correctAnswer] +'</p>');
+    secondContainer.append('<img class="wrongPic" src="https://i.kym-cdn.com/entries/icons/original/000/005/609/800px-Yamcha_found_dead.jpg"><br><br>');
+    secondContainer.append('<button onclick=next() type="submit">Next</button>');
+    clearInterval(intervalId);
 }
 
 function next(){
     erase();
-    (currentQuestions.length === 0) ? showEndScore() : getQuestion();
+        // remove question from that array
+        currentQuestions.splice(randomQuestion,1);
+    (currentQuestions.length === 0 || totalQuestions == 0) ? showEndScore() : getQuestion();
+    
+}
+
+function startTimer(){
+    timer = timeReset-1;
+    intervalId = setInterval(decreaseTime,1000);
+}
+function decreaseTime(){
+    $('.timer').text('Time Remaining: '+timer + ' Seconds');
+    timer--;
+    if(timer < -1){
+        isWrong();
+    }
 }
 
 function erase(){
