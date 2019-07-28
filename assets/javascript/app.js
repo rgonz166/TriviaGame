@@ -73,8 +73,8 @@ function isWrong(){
     wrong++;
     console.log(randomQuestion);
     var correctAnswer = (currentQuestions[randomQuestion][1][4]);
-    secondContainer.html('<h3>'+currentQuestions[randomQuestion][0][0]+'</h3>');
-    secondContainer.append('<p>'+ currentQuestions[randomQuestion][1][correctAnswer] +'</p>');
+    secondContainer.html('<h3 class="question">'+currentQuestions[randomQuestion][0][0]+'</h3>');
+    secondContainer.append('<p class="answer-choice">'+ currentQuestions[randomQuestion][1][correctAnswer] +'</p>');
     secondContainer.append('<img class="wrongPic" src="https://i.kym-cdn.com/entries/icons/original/000/005/609/800px-Yamcha_found_dead.jpg"><br><br>');
     // secondContainer.append('<button onclick=next() type="submit">Next</button>');
     clearInterval(intervalId);

@@ -1,6 +1,9 @@
 body{
+    height: auto;
     background-image: url(https://wallpaperaccess.com/full/387102.jpg);
-    background-size: 100vw 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center center; */
 }
 
 .button-hide{
@@ -24,10 +27,10 @@ ul{
     list-style:none;
 }
 img{
-    width: 50%;
+    width: 60%;
 }
 .wrongPic{
-    width: 30%;
+    width: 50%;
 }
 .card{
     margin-top: 50px;
@@ -36,4 +39,22 @@ img{
 }
 .card-body, .card{
     height: 500px;
+}
+
+@media screen and (max-width: 600px){
+    .wrongPic{
+        width:70%;
+    }
+    img{
+        width: 70%;
+    }
+    .question{
+        font-size: 1.2rem;
+    }
+    .answer-choice{
+        font-size: 1rem;
+    }
+    .title-dbz{
+        font-size: 1.8rem;
+    }
 }
