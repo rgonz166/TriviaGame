@@ -63,8 +63,9 @@ $(document).on('click','li',function(){
 function isCorrect(){
     erase();
     secondContainer.html('<img src="http://giphygifs.s3.amazonaws.com/media/11YMhfLfGoq5Gg/giphy.gif"><br><br>');
-    secondContainer.append('<button onclick=next() type="submit">Next</button>');
+    // secondContainer.append('<button onclick=next() type="submit">Next</button>');
     clearInterval(intervalId);
+    setTimeout(next, 3000);
 }
 
 function isWrong(){
@@ -75,8 +76,9 @@ function isWrong(){
     secondContainer.html('<h3>'+currentQuestions[randomQuestion][0][0]+'</h3>');
     secondContainer.append('<p>'+ currentQuestions[randomQuestion][1][correctAnswer] +'</p>');
     secondContainer.append('<img class="wrongPic" src="https://i.kym-cdn.com/entries/icons/original/000/005/609/800px-Yamcha_found_dead.jpg"><br><br>');
-    secondContainer.append('<button onclick=next() type="submit">Next</button>');
+    // secondContainer.append('<button onclick=next() type="submit">Next</button>');
     clearInterval(intervalId);
+    setTimeout(next, 5000);
 }
 
 function next(){
